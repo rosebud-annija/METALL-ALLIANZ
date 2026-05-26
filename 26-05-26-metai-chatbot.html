@@ -41,36 +41,22 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      max-width: 780px;
-      margin: 0 auto;
     }
 
     /* ── HEADER ── */
     .header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 28px;
       border-bottom: 2px solid var(--text);
       background: var(--surface);
       flex-shrink: 0;
     }
 
-    .logo-mark {
-      width: 44px;
-      height: 44px;
-      background: var(--accent);
-      border-radius: 4px;
+    .header-inner {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 11px;
-      color: var(--text);
-      letter-spacing: 0.03em;
-      flex-shrink: 0;
-      line-height: 1.2;
-      text-align: center;
+      gap: 16px;
+      padding: 20px 28px;
+      max-width: 780px;
+      margin: 0 auto;
     }
 
     .header-text { flex: 1; }
@@ -82,8 +68,6 @@
       line-height: 1.1;
       text-transform: uppercase;
     }
-    .header-title span { color: var(--accent-ink); }
-
     .header-sub {
       font-size: 11px;
       color: var(--text-dim);
@@ -91,15 +75,6 @@
       text-transform: uppercase;
       margin-top: 3px;
       font-weight: 600;
-    }
-
-    .status-dot {
-      width: 9px;
-      height: 9px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-      border: 2px solid var(--text);
     }
 
     /* ── MESSAGES ── */
@@ -112,6 +87,9 @@
       gap: 6px;
       scroll-behavior: smooth;
       background: var(--bg);
+      max-width: 780px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .messages::-webkit-scrollbar { width: 4px; }
@@ -225,31 +203,6 @@
       flex-direction: row-reverse;
     }
 
-    .avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 0.03em;
-      margin-top: 2px;
-      border: 1.5px solid var(--text);
-    }
-
-    .bot-avatar {
-      background: var(--accent);
-      color: var(--text);
-    }
-
-    .user-avatar {
-      background: var(--text);
-      color: var(--accent);
-    }
-
     .bubble {
       max-width: 82%;
       padding: 13px 17px;
@@ -356,54 +309,17 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── CHIPS ── */
-    .chips-container {
-      padding: 10px 24px 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      flex-shrink: 0;
-      border-top: 2px solid var(--text);
-      background: var(--surface);
-    }
-
-    .chips-label {
-      width: 100%;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-dim);
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .chip {
-      background: transparent;
-      border: 1.5px solid var(--border);
-      color: var(--text-dim);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: var(--font);
-      transition: all .15s;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-    }
-
-    .chip:hover {
-      border-color: var(--text);
-      color: var(--text);
-      background: var(--accent);
-    }
-
     /* ── INPUT ── */
     .input-area {
-      padding: 14px 24px 20px;
       background: var(--surface);
-      border-top: 1px solid var(--border);
+      border-top: 2px solid var(--text);
       flex-shrink: 0;
+    }
+
+    .input-inner {
+      padding: 14px 24px 20px;
+      max-width: 780px;
+      margin: 0 auto;
     }
 
     .input-row {
@@ -503,12 +419,12 @@
 
   <!-- HEADER -->
   <header class="header">
-    <div class="logo-mark">ME<br>TAi</div>
-    <div class="header-text">
-      <div class="header-title">META<span>i</span></div>
-      <div class="header-sub">Stimme der Metall Allianz · Das hält.</div>
+    <div class="header-inner">
+      <div class="header-text">
+        <div class="header-title">METAi</div>
+        <div class="header-sub">Stimme der Metall Allianz</div>
+      </div>
     </div>
-    <div class="status-dot" title="Online"></div>
   </header>
 
   <!-- MESSAGES -->
@@ -516,37 +432,26 @@
     <!-- splash + chat rendered by JS -->
   </div>
 
-  <!-- SUGGESTION CHIPS -->
-  <div class="chips-container" id="chips">
-    <div class="chips-label">Frag mich zum Beispiel</div>
-    <button class="chip" onclick="sendChip(this)">Warum ist Metall wichtig?</button>
-    <button class="chip" onclick="sendChip(this)">Was ist nur mit Metall möglich?</button>
-    <button class="chip" onclick="sendChip(this)">Metall und Klimaschutz?</button>
-    <button class="chip" onclick="sendChip(this)">Was ist Green Steel?</button>
-    <button class="chip" onclick="sendChip(this)">Metall & Kreislaufwirtschaft</button>
-    <button class="chip" onclick="sendChip(this)">Wie viele Jobs gibt es in der Metallbranche?</button>
-    <button class="chip" onclick="sendChip(this)">Was ist die Metall Allianz?</button>
-    <button class="chip" onclick="sendChip(this)">Warum ist Metall zukunftsfähig?</button>
-  </div>
-
   <!-- INPUT -->
   <div class="input-area">
-    <div class="input-row">
-      <textarea
-        class="input-field"
-        id="input"
-        placeholder="Stell mir eine Frage über Metall …"
-        rows="1"
-        onkeydown="handleKey(event)"
-        oninput="autoResize(this)"
-      ></textarea>
-      <button class="send-btn" id="sendBtn" onclick="handleSend()" title="Senden">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-        </svg>
-      </button>
+    <div class="input-inner">
+      <div class="input-row">
+        <textarea
+          class="input-field"
+          id="input"
+          placeholder="Stell mir eine Frage über Metall …"
+          rows="1"
+          onkeydown="handleKey(event)"
+          oninput="autoResize(this)"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" onclick="handleSend()" title="Senden">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="footer-note">METAi basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
     </div>
-    <div class="footer-note">METAi basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative. Das hält.</div>
   </div>
 
 </div>
@@ -566,7 +471,7 @@ const SPLASH_FACTS = [
   },
   {
     question: "Ist Metall gut fürs Klima?",
-    teaser: "Metall ist kein Klimaproblem — es ist Teil der Lösung. 100 % recycelbar, ohne Qualitätsverlust. Das hält."
+    teaser: "Metall ist kein Klimaproblem — es ist Teil der Lösung. 100 % recycelbar, ohne Qualitätsverlust."
   },
   {
     question: "Wie sieht die Zukunft der Metallbranche aus?",
@@ -605,7 +510,7 @@ Züge. Brücken. Strommasten. Operationssäle. Ohne Metall steht alles still. Di
 
 Metall bewegt, verbindet, schützt und trägt. Es hält viel aus — und noch mehr bereit.
 
-<span class="hält">Das hält.</span>`
+`
   },
   {
     triggers: ["nur mit metall", "was ist möglich", "was metall kann", "allein metall", "einzigartig", "kein anderer werkstoff"],
@@ -615,7 +520,7 @@ Ein Bühnengerüst, das 40 Personen trägt. Ein Karabiner, dem ein Kletterer sei
 
 <em>Kein anderer Werkstoff kann das alles.</em> Metall ist stark, formbar, präzise — und es hält, was andere nur versprechen.
 
-<span class="hält">Das hält.</span>`
+`
   },
   {
     triggers: ["klima", "umwelt", "co2", "nachhaltigkeit", "klimaproblem", "klimaschutz", "ökologisch", "grün"],
@@ -630,7 +535,7 @@ Das klingt mutig. Aber es stimmt. Denn:
 <li>Metall ermöglicht die Energiewende — Windräder, Solarpanels, Batterien brauchen alle Metall.</li>
 </ul>
 
-Hält Wort in Sachen Klima. <span class="hält">Das hält.</span>`
+Hält Wort in Sachen Klima.`
   },
   {
     triggers: ["green steel", "grüner stahl", "elektrolichtbogen", "eisenoxid", "elektrolyse", "wasserstoff stahl"],
@@ -646,7 +551,7 @@ Die Stahlindustrie steht vor einer Revolution. Und sie macht sie selbst.
 
 Green Steel hält Europa im Spiel. Und hält Schritt mit dem Pariser Klimaziel.
 
-<span class="hält">Das hält.</span>`
+`
   },
   {
     triggers: ["kreislauf", "recycling", "recycelbar", "wiederverwendung", "kreislaufwirtschaft", "circular"],
@@ -660,7 +565,7 @@ Kein anderer Werkstoff recycelt sich so gut wie Metall. Stahl aus dem Schrottpla
 <li><strong>Kupfer:</strong> verliert beim Recyclen keine Leitfähigkeit</li>
 </ul>
 
-Metall kennt kein Ende. Nur einen neuen Anfang. <span class="hält">Das hält.</span>`
+Metall kennt kein Ende. Nur einen neuen Anfang.`
   },
   {
     triggers: ["jobs", "beschäftigte", "arbeitsplätze", "mitarbeiter", "arbeit", "130.000", "berufe"],
@@ -670,7 +575,7 @@ Die Metallbranche ist einer der größten Arbeitgeber Österreichs. Ingenieurinn
 
 Metall hält Können im Land — und bietet Berufe mit Zukunft. Nicht trotz, sondern wegen der Transformation. Wer Metall versteht, versteht die Wirtschaft von morgen.
 
-<span class="hält">Das hält.</span>`
+`
   },
   {
     triggers: ["metall allianz", "zukunft metall", "initiative", "wer seid ihr", "was ist metai", "was bist du", "wer bist du"],
@@ -687,8 +592,7 @@ Fünf Missionen:
 <li><strong>Zukunft denken</strong> — langfristig planen</li>
 </ul>
 
-Nicht als Branche. Nicht als Lobby. Sondern als gemeinsame Haltung.
-<span class="hält">Das hält.</span>`
+Nicht als Branche. Nicht als Lobby. Sondern als gemeinsame Haltung.`
   },
   {
     triggers: ["zukunft", "zukunftsfähig", "morgen", "innovation", "digitalisierung", "automatisierung", "fortschritt"],
@@ -705,7 +609,7 @@ Metall ist nicht das Material von gestern. Es ist das Material des Wandels.
 
 Heute arbeitet Metall präzise, vernetzt und im Kreislauf. Das war noch nie so. Und das ist erst der Anfang.
 
-<span class="hält">Das hält.</span>`
+`
   },
   {
     triggers: ["energie", "energiewende", "windkraft", "solar", "batterie", "strom", "windrad"],
@@ -720,8 +624,7 @@ Das ist keine Behauptung. Das ist Physik.
 <li><strong>Stromleitungen</strong> über tausende Kilometer? Kupfer und Aluminium</li>
 </ul>
 
-Wer die Energiewende will, muss Metall wollen. Hält Europa im Spiel.
-<span class="hält">Das hält.</span>`
+Wer die Energiewende will, muss Metall wollen. Hält Europa im Spiel.`
   },
   {
     triggers: ["aluminium", "stahl", "kupfer", "eisen", "titan", "nickel", "metalle"],
@@ -737,7 +640,7 @@ Jedes Metall hat seine Stärken. Und gemeinsam sind sie unschlagbar.
 <li><strong>Nickel / Kobalt:</strong> Schlüsselelemente für Batterietechnologie</li>
 </ul>
 
-Formbar. Haltbar. Verlässlich. <span class="hält">Das hält.</span>`
+Formbar. Haltbar. Verlässlich. `
   },
   {
     triggers: ["österreich", "heimisch", "inland", "standort", "produktion", "wien", "graz"],
@@ -747,7 +650,7 @@ Formbar. Haltbar. Verlässlich. <span class="hält">Das hält.</span>`
 
 Mehr als <strong>130.000 Arbeitsplätze</strong>. Milliarden an Exportwert. Metall hält Können im Land — und macht Österreich zur Technologienation.
 
-<span class="hält">Das hält.</span>`
+`
   },
   {
     triggers: ["hallo", "hi", "guten", "guten tag", "servus", "grüß", "hey", "start", "wer bist"],
@@ -755,15 +658,13 @@ Mehr als <strong>130.000 Arbeitsplätze</strong>. Milliarden an Exportwert. Meta
 
 Die Stimme der Metall Allianz. Ich bin hier, um Fragen über Metall zu beantworten — von Klimaschutz und Kreislaufwirtschaft bis zu Jobperspektiven und Innovation.
 
-Stell mir eine Frage. Oder wähl unten einen Vorschlag aus.
-
-Alles, was ich sagen kann, gilt: <span class="hält">Das hält.</span>`
+Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Branche.`
   },
   {
     triggers: ["danke", "super", "toll", "prima", "gut", "vielen dank", "interessant", "wusste ich nicht"],
     answer: `Freut mich! Metall hat noch viel mehr zu erzählen.
 
-Frag mich weiter — ich bin nicht so schnell fertig. <span class="hält">Das hält.</span>`
+Frag mich weiter — ich bin nicht so schnell fertig.`
   },
   {
     triggers: ["brücke", "gebäude", "architektur", "hochhaus", "konstruktion", "tragwerk"],
@@ -773,7 +674,7 @@ Im wahrsten Sinne. Jede Brücke. Jede Fassade. Jedes Hochhaus. Stahl und Alumini
 
 Das Burj Khalifa? Stahl. Die Golden Gate Bridge? Stahl. Die Glashülle des Louvre-Eingangs? Aluminium.
 
-Metall hält — auch im Grenzbereich. <span class="hält">Das hält.</span>`
+Metall hält — auch im Grenzbereich. `
   },
   {
     triggers: ["auto", "mobilität", "e-auto", "elektro", "fahrzeug", "transport", "lkw", "zug"],
@@ -783,15 +684,13 @@ Kein Auto ohne Karosserie aus Stahl und Aluminium. Kein Zug ohne Gleise. Kein E-
 
 Die Mobilitätswende braucht mehr Metall, nicht weniger. Leichtere Bauteile aus Aluminium. Hochfester Stahl für Sicherheitszellen. Batteriegehäuse aus Speziallegierungen.
 
-Metall hält Schritt. <span class="hält">Das hält.</span>`
+Metall hält Schritt. `
   },
 ];
 
 const FALLBACK = `Das ist eine gute Frage — und ich bin noch im Aufbau meiner Antworten.
 
-Was ich sagen kann: <strong>Metall hält.</strong> In jeder Situation. Was genau du wissen willst, kannst du mir gerne nochmal mit anderen Worten schreiben — oder einen Vorschlag unten auswählen.
-
-<span class="hält">Das hält.</span>`;
+Was ich sagen kann: <strong>Metall hält.</strong> In jeder Situation. Was genau du wissen willst, kannst du mir gerne nochmal mit anderen Worten schreiben.`;
 
 // ─────────────────────────────────────────────
 // CORE FUNCTIONS
@@ -823,10 +722,6 @@ function addMessage(html, role) {
   const wrap = document.createElement('div');
   wrap.className = `message ${role}`;
 
-  const avatarEl = document.createElement('div');
-  avatarEl.className = `avatar ${role === 'bot' ? 'bot-avatar' : 'user-avatar'}`;
-  avatarEl.textContent = role === 'bot' ? 'Mi' : 'Du';
-
   const bubbleEl = document.createElement('div');
   bubbleEl.className = 'bubble';
   bubbleEl.innerHTML = html;
@@ -835,7 +730,6 @@ function addMessage(html, role) {
   tsEl.className = 'timestamp';
   tsEl.textContent = now();
 
-  wrap.appendChild(avatarEl);
   const inner = document.createElement('div');
   inner.appendChild(bubbleEl);
   inner.appendChild(tsEl);
@@ -851,7 +745,6 @@ function showTyping() {
   el.className = 'typing-indicator';
   el.id = 'typing';
   el.innerHTML = `
-    <div class="avatar bot-avatar">Mi</div>
     <div class="typing-dots">
       <span></span><span></span><span></span>
     </div>`;
@@ -976,7 +869,7 @@ async function showGreeting() {
 
 Die Stimme der Metall Allianz — und ich hab einiges zu erzählen.
 
-Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Branche. Oder wähl einen Vorschlag unten aus.`, 'bot');
+Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Branche.`, 'bot');
 
   // Then splash
   await delay(200);

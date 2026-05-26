@@ -1,8 +1,8 @@
 # METAi Chatbot – Projektkontext für Claude Code
 
 **Datum:** 26.05.2026  
-**Datei:** `26-05-26-metai-chatbot.html`  
-**Status:** Erste funktionsfähige Version fertig
+**Dateien:** `26-05-26-metai-chatbot.html` · `index.html`  
+**Status:** Redesign abgeschlossen · Deployed auf GitHub Pages ✅
 
 ---
 
@@ -15,6 +15,29 @@ METAi ist ein interaktiver Chatbot – die „Stimme der Metall Allianz" (Initia
 - **Sprache:** Deutsch (österreichischer Kontext)
 - **Technologie:** Reines HTML/CSS/JS (kein externes API, kein Framework)
 - **Wissensquelle:** Rule-based Keyword-Matching gegen eine eingebettete Wissensbasis
+
+---
+
+## GitHub Repository
+
+- **Repo:** [https://github.com/rosebud-annija/METALL-ALLIANZ](https://github.com/rosebud-annija/METALL-ALLIANZ) (privat)
+- **Live-URL:** [https://rosebud-annija.github.io/METALL-ALLIANZ/](https://rosebud-annija.github.io/METALL-ALLIANZ/)
+- **Branch:** `main`
+- **Git remote:** `origin` → HTTPS (`https://github.com/rosebud-annija/METALL-ALLIANZ.git`)
+- **Git user:** `rosebud-annija` · `ac@rosebud.cc` (lokal konfiguriert)
+- **Credential helper:** macOS `osxkeychain` (kein SSH)
+
+### Update deployen
+
+```bash
+# Im Repo-Verzeichnis:
+git add 26-05-26-metai-chatbot.html index.html
+git commit -m "Update: ..."
+git push
+# GitHub Pages baut automatisch (~60 Sekunden)
+```
+
+> **Wichtig:** `index.html` ist eine Kopie von `26-05-26-metai-chatbot.html` — beide müssen bei Änderungen synchron gehalten werden. GitHub Pages braucht `index.html` im Root.
 
 ---
 
@@ -31,9 +54,54 @@ Abgeleitet aus dem Slogan **„Das hält."** und dem Rosebud-Agenturkonzept „E
 
 ---
 
-## Wissensbase (Themen & Key-Facts)
+## Design-System (aktuell: Light Theme)
 
-Aus zwei PDFs extrahiert:
+Redesign im Mai 2026: Wechsel vom dunklen Industrielook zu einem cleanen, modernen Weißdesign passend zur Website der Metall Allianz.
+
+### CSS Custom Properties
+
+```css
+:root {
+  --bg:          #ffffff;
+  --surface:     #ffffff;
+  --surface2:    #f4f5f4;
+  --surface3:    #eaeaea;
+  --border:      #e0e0e0;
+  --accent:      #79FFE1;        /* Mint – primäre Markenfarbe */
+  --accent-ink:  #007d65;        /* Dunkle Mint für Text auf hellem BG */
+  --text:        #111111;
+  --text-dim:    #777777;
+  --user-bubble: #111111;
+  --bot-bubble:  #f4f5f4;
+  --radius:      12px;
+  --font:        'Futura', 'Outfit', 'Century Gothic', 'Trebuchet MS', system-ui, sans-serif;
+}
+```
+
+### Typografie
+- **Primär:** Futura (lokal, falls vorhanden)
+- **Fallback:** Outfit (Google Fonts, geladen via `<link>`) → Century Gothic → System
+- Gewichte: 400, 600, 700, 900
+- Header: `font-weight: 900`, `text-transform: uppercase`, `letter-spacing: 0.06em`
+
+### Key-Elemente
+- **Header:** weißer BG, `border-bottom: 2px solid var(--text)`, Logo-Mark mit Mint-Hintergrund
+- **Bot-Avatar:** Mint-BG, schwarzer Text, schwarzer Border
+- **User-Avatar:** schwarzer BG, Mint-Text, schwarzer Border
+- **Bot-Bubble:** hellgrau (`#f4f5f4`), subtiler Border
+- **User-Bubble:** schwarz, weißer Text
+- **`.hält`-Pill:** Mint-BG, schwarzer Text, Uppercase, `border-radius: 20px`
+- **Chips:** transparent, grauer Border → Hover: Mint-Fill + schwarzer Text
+- **Send-Button:** Mint-BG, schwarzer Border → Hover: invertiert
+
+### Sicherheit
+- Keine Claude API-Keys oder Credentials in den Dateien
+- Keine externen API-Calls
+- 100 % client-side Keyword-Matching
+
+---
+
+## Wissensbase (Themen & Key-Facts)
 
 ### Kernbotschaften
 - Metall ist das Rückgrat der österreichischen Wirtschaft
@@ -77,7 +145,7 @@ Keine klassische Lobby – „Nicht als Branche. Nicht als Lobby. Sondern als ge
 
 ---
 
-## Aktuelle Features (v1)
+## Features (aktuell)
 
 ### Splash-Karte beim Laden
 - Zeigt beim Start eine rotierende „Wusstest du?"-Karte
@@ -104,23 +172,19 @@ Keine klassische Lobby – „Nicht als Branche. Nicht als Lobby. Sondern als ge
   - Was ist die Metall Allianz?
   - Warum ist Metall zukunftsfähig?
 
-### Design
-- Dunkel-industriell (Hintergrund: #0e0f11)
-- Goldener Markenakzent (#c8a96e) für Highlights & CTA
-- Teal-Akzent (#7ec8c8) für Sekundärhighlights in Antworten
-- CSS Custom Properties für einfaches Theming
-- Responsive (flex-basiertes Layout)
-- Google Fonts: Inter
-
 ---
 
 ## Dateistruktur
 
 ```
-26-05-26-metai-chatbot.html    ← Hauptdatei (alles in einer Datei)
+/
+├── 26-05-26-metai-chatbot.html    ← Hauptdatei (alles in einer Datei)
+├── index.html                     ← Identische Kopie für GitHub Pages
+└── 26-05-26-metai-kontext-fuer-claude-code.md  ← Diese Datei
 ```
 
-Alles – HTML, CSS, JavaScript – ist in einer einzigen `.html`-Datei.
+Alles – HTML, CSS, JavaScript – ist in einer einzigen `.html`-Datei.  
+`index.html` ist eine 1:1-Kopie und muss bei Updates synchron gehalten werden.
 
 ---
 
@@ -128,13 +192,11 @@ Alles – HTML, CSS, JavaScript – ist in einer einzigen `.html`-Datei.
 
 ### Inhalt
 - [ ] Mehr KB-Einträge (z. B. Medizintechnik, Raumfahrt, Baustoffe, Berufsbilder)
-- [ ] Dritte PDF auslesen: `Konzeption_Initiative „Zukunft Metall" – Leitbild, Ziele, Maßnahmen.pdf` (konnte wegen Sonderzeichen im Dateinamen nicht gelesen werden → umbenennen und nochmal versuchen)
+- [ ] Dritte PDF auslesen: `Konzeption_Initiative „Zukunft Metall" – Leitbild, Ziele, Maßnahmen.pdf` (Sonderzeichen im Dateinamen → umbenennen und einlesen)
 - [ ] Mehrsprachigkeit (EN/DE Toggle)
 
 ### UX / Design
-- [ ] Light Mode Toggle
-- [ ] Animierter Metall-Gradient im Header
-- [ ] Antworten mit Icons (z. B. 🔩 ♻️) – falls gewünscht
+- [ ] Animierter Mint-Gradient im Header
 - [ ] „Zurück zur Startseite"-Button / Reset-Chat
 - [ ] Feedback-Buttons (👍 👎) pro Antwort
 
@@ -159,19 +221,22 @@ Alles – HTML, CSS, JavaScript – ist in einer einzigen `.html`-Datei.
 
 ## Prompt für Claude Code (Weiterarbeit)
 
-Wenn du Claude Code verwendest, kannst du diesen Kontext direkt mitgeben:
-
 ```
 Ich arbeite an einem interaktiven Chatbot namens "METAi" – die Stimme der Metall Allianz.
-Die Datei heißt 26-05-26-metai-chatbot.html und enthält alles in einer HTML-Datei (kein Framework, kein Build-Tool).
+Die Datei heißt 26-05-26-metai-chatbot.html (und index.html als identische Kopie für GitHub Pages).
+Alles in einer HTML-Datei (kein Framework, kein Build-Tool).
 Der Chatbot nutzt Rule-based Keyword-Matching in JavaScript.
 Markensprache: kurze, aktive Sätze, Tonalität von "Das hält." abgeleitet.
 Alle Antworten auf Deutsch.
 Jede Bot-Antwort endet mit <span class="hält">Das hält.</span>
 
-[Aufgabe hier einfügen – z. B.: "Füge 5 neue KB-Einträge hinzu für das Thema Medizintechnik."]
+Design: Light Theme, Mint-Akzent #79FFE1, Futura/Outfit Font, Schwarz-Weiß-Kontrast.
+GitHub: https://github.com/rosebud-annija/METALL-ALLIANZ
+Live: https://rosebud-annija.github.io/METALL-ALLIANZ/
+
+[Aufgabe hier einfügen]
 ```
 
 ---
 
-*Erstellt in Cowork · 26.05.2026*
+*Erstellt in Cowork · 26.05.2026 · Redesign & Deployment: 26.05.2026*
