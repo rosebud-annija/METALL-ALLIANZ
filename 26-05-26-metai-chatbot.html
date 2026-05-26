@@ -82,6 +82,7 @@
     .messages {
       flex: 1;
       overflow-y: auto;
+      scrollbar-width: none;
       padding: 28px max(24px, calc((100% - 780px) / 2)) 16px;
       display: flex;
       flex-direction: column;
@@ -91,9 +92,7 @@
       width: 100%;
     }
 
-    .messages::-webkit-scrollbar { width: 4px; }
-    .messages::-webkit-scrollbar-track { background: transparent; }
-    .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .messages::-webkit-scrollbar { display: none; }
 
     /* ── SPLASH / FACT CARD ── */
     .splash-card {
