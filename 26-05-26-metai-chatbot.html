@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>METAi – Die Stimme der Metall Allianz</title>
+  <title>METAI – Die Stimme der Metall Allianz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet" />
@@ -64,7 +64,7 @@
       font-size: 50px;
       font-weight: 900;
       letter-spacing: 0.06em;
-      color: var(--text);
+      color: var(--accent);
       line-height: 1.0;
       text-transform: uppercase;
     }
@@ -82,15 +82,13 @@
     .messages {
       flex: 1;
       overflow-y: auto;
-      padding: 28px 24px 16px;
+      padding: 28px max(24px, calc((100% - 780px) / 2)) 16px;
       display: flex;
       flex-direction: column;
       gap: 6px;
       scroll-behavior: smooth;
       background: var(--bg);
-      max-width: 780px;
       width: 100%;
-      margin: 0 auto;
     }
 
     .messages::-webkit-scrollbar { width: 4px; }
@@ -452,7 +450,7 @@
   <header class="header">
     <div class="header-inner">
       <div class="header-text">
-        <div class="header-title">METAi</div>
+        <div class="header-title">METAI</div>
         <div class="header-sub">Stimme der Metall Allianz</div>
       </div>
     </div>
@@ -481,7 +479,7 @@
           </svg>
         </button>
       </div>
-      <div class="footer-note">METAi basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
+      <div class="footer-note">METAI basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
     </div>
   </div>
 
@@ -535,22 +533,22 @@ let splashShown = false;
 const KB = [
   {
     triggers: ["warum metall", "wichtig", "bedeutung", "unverzichtbar", "rückgrat", "wirtschaft", "wofür"],
-    answer: `<strong>Metall hält Österreich in Bewegung.</strong>
+    answer: `<strong>Warum Metall unverzichtbar ist.</strong>
 
-Züge. Brücken. Strommasten. Operationssäle. Ohne Metall steht alles still. Die Metallbranche ist das Rückgrat der österreichischen Wirtschaft — nicht im übertragenen Sinn, sondern buchstäblich.
+Züge, Brücken, Strommasten, Operationssäle — ohne Metall funktioniert das alles nicht. Die Metallbranche ist einer der wichtigsten Industriezweige Österreichs, sowohl als Arbeitgeber als auch als Exportbranche.
 
-Metall bewegt, verbindet, schützt und trägt. Es hält viel aus — und noch mehr bereit.
+Kein anderer Werkstoff vereint Tragfähigkeit, Formbarkeit, Leitfähigkeit und Recyclingfähigkeit so wie Metall.
 
 `,
     chips: ["Kreislaufwirtschaft?", "Klimaschutz & Metall?", "Jobs in der Branche?"]
   },
   {
     triggers: ["nur mit metall", "was ist möglich", "was metall kann", "allein metall", "einzigartig", "kein anderer werkstoff"],
-    answer: `<strong>Was ohne Metall einfach nicht geht.</strong>
+    answer: `<strong>Was nur Metall kann.</strong>
 
 Ein Bühnengerüst, das 40 Personen trägt. Ein Karabiner, dem ein Kletterer sein Leben anvertraut. Ein Herzschrittmacher, der 15 Jahre hält. Eine Raumfahrtkapsel, die dem Wiedereintritt standhält.
 
-<em>Kein anderer Werkstoff kann das alles.</em> Metall ist stark, formbar, präzise — und es hält, was andere nur versprechen.
+Kein anderer Werkstoff vereint diese Kombination aus Festigkeit, Präzision und Formbarkeit. Das erklärt, warum Metall in so vielen sicherheitskritischen Bereichen keine Alternative hat.
 
 `,
     chips: ["Metall in der Architektur?", "Metall & Mobilität?", "Metall & Energiewende?"]
@@ -568,7 +566,7 @@ Das klingt mutig. Aber es stimmt. Denn:
 <li>Metall ermöglicht die Energiewende — Windräder, Solarpanels, Batterien brauchen alle Metall.</li>
 </ul>
 
-Hält Wort in Sachen Klima.`,
+Die Transformation läuft — in Österreich und europaweit.`,
     chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Metall & Energiewende?"]
   },
   {
@@ -583,7 +581,7 @@ Die Stahlindustrie steht vor einer Revolution. Und sie macht sie selbst.
 <li>Pilotanlagen laufen bereits in Österreich und Europa.</li>
 </ul>
 
-Green Steel hält Europa im Spiel. Und hält Schritt mit dem Pariser Klimaziel.
+Pilotanlagen zeigen, dass das wirtschaftlich funktionieren kann — auch wenn der Hochlauf noch Zeit braucht.
 
 `,
     chips: ["Kreislaufwirtschaft?", "Metall & Energiewende?", "Jobs in der Branche?"]
@@ -600,7 +598,7 @@ Kein anderer Werkstoff recycelt sich so gut wie Metall. Stahl aus dem Schrottpla
 <li><strong>Kupfer:</strong> verliert beim Recyclen keine Leitfähigkeit</li>
 </ul>
 
-Metall kennt kein Ende. Nur einen neuen Anfang.`,
+Das macht Metall zu einem der wenigen Werkstoffe, die wirklich im Kreislauf funktionieren — ohne Qualitätsverlust über viele Zyklen.`,
     chips: ["Was ist Green Steel?", "Einzelne Metalle?", "Klimaschutz & Metall?"]
   },
   {
@@ -609,14 +607,14 @@ Metall kennt kein Ende. Nur einen neuen Anfang.`,
 
 Die Metallbranche ist einer der größten Arbeitgeber Österreichs. Ingenieurinnen. Schweißer. Forscherinnen. Mechatroniker. Azubis.
 
-Metall hält Können im Land — und bietet Berufe mit Zukunft. Nicht trotz, sondern wegen der Transformation. Wer Metall versteht, versteht die Wirtschaft von morgen.
+Die Branche bietet technische Berufe mit guter Ausbildung — und durch die laufende Transformation entstehen neue Rollen in Bereichen wie Green Steel, Automatisierung und Werkstoffforschung.
 
 `,
     chips: ["Metall in Österreich?", "Zukunft & Innovation?", "Was ist die Metall Allianz?"]
   },
   {
     triggers: ["metall allianz", "zukunft metall", "initiative", "wer seid ihr", "was ist metai", "was bist du", "wer bist du"],
-    answer: `<strong>Ich bin METAi — die Stimme der Metall Allianz.</strong>
+    answer: `<strong>Ich bin METAI — die Stimme der Metall Allianz.</strong>
 
 Die Metall Allianz ist keine klassische Lobby. Kein Interessensverband mit Hochglanzbroschüre. Sie ist eine gemeinsame Haltung von Unternehmen, Menschen und Ideen — für eine Branche, die trägt.
 
@@ -629,7 +627,7 @@ Fünf Missionen:
 <li><strong>Zukunft denken</strong> — langfristig planen</li>
 </ul>
 
-Nicht als Branche. Nicht als Lobby. Sondern als gemeinsame Haltung.`,
+Kurz: eine Initiative, die über einzelne Unternehmensinteressen hinausgeht und die Branche als Ganzes nach außen vertritt.`,
     chips: ["Jobs in der Branche?", "Metall in Österreich?", "Zukunft & Innovation?"]
   },
   {
@@ -645,7 +643,7 @@ Metall ist nicht das Material von gestern. Es ist das Material des Wandels.
 <li>Batterietechnologien für die E-Mobilität brauchen Lithium, Kobalt, Nickel</li>
 </ul>
 
-Heute arbeitet Metall präzise, vernetzt und im Kreislauf. Das war noch nie so. Und das ist erst der Anfang.
+Die Kombination aus Digitalisierung, neuen Legierungen und Kreislaufwirtschaft verändert gerade, wie Metall produziert und eingesetzt wird.
 
 `,
     chips: ["Was ist Green Steel?", "Metall & Energiewende?", "Kreislaufwirtschaft?"]
@@ -663,7 +661,7 @@ Das ist keine Behauptung. Das ist Physik.
 <li><strong>Stromleitungen</strong> über tausende Kilometer? Kupfer und Aluminium</li>
 </ul>
 
-Wer die Energiewende will, muss Metall wollen. Hält Europa im Spiel.`,
+Die Energiewende ist ohne Metall schlicht nicht umsetzbar — das gilt für jede Technologie, egal ob Wind, Solar oder Speicher.`,
     chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Metall & Mobilität?"]
   },
   {
@@ -680,7 +678,7 @@ Jedes Metall hat seine Stärken. Und gemeinsam sind sie unschlagbar.
 <li><strong>Nickel / Kobalt:</strong> Schlüsselelemente für Batterietechnologie</li>
 </ul>
 
-Formbar. Haltbar. Verlässlich. `,
+Je nach Anwendung wird das passende Metall eingesetzt — oder eine Legierung, die mehrere Eigenschaften kombiniert.`,
     chips: ["Kreislaufwirtschaft?", "Metall & Energiewende?", "Metall & Mobilität?"]
   },
   {
@@ -689,14 +687,14 @@ Formbar. Haltbar. Verlässlich. `,
 
 Österreich ist ein Metallland — ob man es weiß oder nicht. Voestalpine, Anton Paar, AVL List, FACC, Engel: Weltklasse-Unternehmen mit Wurzeln in der Metallbearbeitung.
 
-Mehr als <strong>130.000 Arbeitsplätze</strong>. Milliarden an Exportwert. Metall hält Können im Land — und macht Österreich zur Technologienation.
+Mehr als <strong>130.000 Arbeitsplätze</strong>. Milliarden an Exportwert. Österreich ist damit einer der wenigen EU-Standorte, der die gesamte Wertschöpfungskette von Rohstoff bis Hightech-Bauteil abbildet.
 
 `,
     chips: ["Jobs in der Branche?", "Metall in der Architektur?", "Metall & Mobilität?"]
   },
   {
     triggers: ["hallo", "hi", "guten", "guten tag", "servus", "grüß", "hey", "start", "wer bist"],
-    answer: `<strong>Servus! Ich bin METAi.</strong>
+    answer: `<strong>Servus! Ich bin METAI.</strong>
 
 Die Stimme der Metall Allianz. Ich bin hier, um Fragen über Metall zu beantworten — von Klimaschutz und Kreislaufwirtschaft bis zu Jobperspektiven und Innovation.
 
@@ -718,7 +716,7 @@ Im wahrsten Sinne. Jede Brücke. Jede Fassade. Jedes Hochhaus. Stahl und Alumini
 
 Das Burj Khalifa? Stahl. Die Golden Gate Bridge? Stahl. Die Glashülle des Louvre-Eingangs? Aluminium.
 
-Metall hält — auch im Grenzbereich. `,
+Stahl und Aluminium sind in der Architektur oft unsichtbar, tragen aber die gesamte Statik.`,
     chips: ["Einzelne Metalle?", "Metall in Österreich?", "Kreislaufwirtschaft?"]
   },
   {
@@ -729,7 +727,7 @@ Kein Auto ohne Karosserie aus Stahl und Aluminium. Kein Zug ohne Gleise. Kein E-
 
 Die Mobilitätswende braucht mehr Metall, nicht weniger. Leichtere Bauteile aus Aluminium. Hochfester Stahl für Sicherheitszellen. Batteriegehäuse aus Speziallegierungen.
 
-Metall hält Schritt. `,
+Die Mobilitätswende braucht also mehr Metall, nicht weniger — nur in anderen Formen und Legierungen als bisher.`,
     chips: ["Metall & Energiewende?", "Einzelne Metalle?", "Was ist Green Steel?"]
   },
 ];
@@ -744,12 +742,28 @@ const FALLBACK_CHIPS = ["Klimaschutz & Metall?", "Was ist Green Steel?", "Jobs i
 // CORE FUNCTIONS
 // ─────────────────────────────────────────────
 
+const usedKBIndices = new Set();
+
 function getAnswerWithChips(query) {
   const q = query.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-  for (const entry of KB) {
-    for (const t of entry.triggers) {
+  // First pass: find matching, unused entry
+  for (let i = 0; i < KB.length; i++) {
+    if (usedKBIndices.has(i)) continue;
+    for (const t of KB[i].triggers) {
       const norm = t.normalize("NFD").replace(/[̀-ͯ]/g, "");
-      if (q.includes(norm)) return { answer: entry.answer, chips: entry.chips || [] };
+      if (q.includes(norm)) {
+        usedKBIndices.add(i);
+        return { answer: KB[i].answer, chips: KB[i].chips || [] };
+      }
+    }
+  }
+  // Second pass: if all matches were already used, allow repeat
+  for (let i = 0; i < KB.length; i++) {
+    for (const t of KB[i].triggers) {
+      const norm = t.normalize("NFD").replace(/[̀-ͯ]/g, "");
+      if (q.includes(norm)) {
+        return { answer: KB[i].answer, chips: KB[i].chips || [] };
+      }
     }
   }
   return { answer: FALLBACK, chips: FALLBACK_CHIPS };
@@ -900,7 +914,7 @@ function renderSplash(index) {
     </div>
   `;
 
-  msgs.insertBefore(card, msgs.firstChild);
+  msgs.appendChild(card);
   scrollBottom();
 }
 
@@ -932,7 +946,7 @@ async function showGreeting() {
   const typing = showTyping();
   await delay(900);
   removeTyping();
-  addMessage(`<strong>Servus. Ich bin METAi.</strong>
+  addMessage(`<strong>Servus! Ich bin METAI.</strong>
 
 Die Stimme der Metall Allianz — und ich hab einiges zu erzählen.
 
@@ -942,8 +956,8 @@ Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Bra
   await delay(200);
   renderSplash(splashIndex);
 
-  // Auto-rotate splash every 12s
-  setInterval(rotateSplash, 12000);
+  // Auto-rotate splash every 22s
+  setInterval(rotateSplash, 22000);
 }
 
 // ─────────────────────────────────────────────

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>METAi – Die Stimme der Metall Allianz</title>
+  <title>METAI – Die Stimme der Metall Allianz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet" />
@@ -61,36 +61,33 @@
 
     .header-text { flex: 1; }
     .header-title {
-      font-size: 50px;
+      font-size: 20px;
       font-weight: 900;
       letter-spacing: 0.06em;
-      color: var(--text);
-      line-height: 1.0;
+      color: var(--accent);
+      line-height: 1.1;
       text-transform: uppercase;
     }
     .header-sub {
-      font-size: 23px;
+      font-size: 11px;
       color: var(--text-dim);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-top: 4px;
+      margin-top: 3px;
       font-weight: 600;
-      line-height: 1.1;
     }
 
     /* ── MESSAGES ── */
     .messages {
       flex: 1;
       overflow-y: auto;
-      padding: 28px 24px 16px;
+      padding: 28px max(24px, calc((100% - 780px) / 2)) 16px;
       display: flex;
       flex-direction: column;
       gap: 6px;
       scroll-behavior: smooth;
       background: var(--bg);
-      max-width: 780px;
       width: 100%;
-      margin: 0 auto;
     }
 
     .messages::-webkit-scrollbar { width: 4px; }
@@ -413,36 +410,6 @@
       height: 1px;
       background: var(--border);
     }
-
-    /* ── SUGGESTION CHIPS ── */
-    .chips-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 4px 0 8px 0;
-      animation: fadeSlide .35s ease;
-    }
-
-    .chip {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 7px 14px;
-      border-radius: 20px;
-      border: 1.5px solid var(--text);
-      background: transparent;
-      color: var(--text);
-      cursor: pointer;
-      font-family: var(--font);
-      transition: background .15s, color .15s;
-      line-height: 1;
-    }
-
-    .chip:hover {
-      background: var(--accent);
-      border-color: var(--text);
-    }
   </style>
 </head>
 <body>
@@ -452,7 +419,7 @@
   <header class="header">
     <div class="header-inner">
       <div class="header-text">
-        <div class="header-title">METAi</div>
+        <div class="header-title">METAI</div>
         <div class="header-sub">Stimme der Metall Allianz</div>
       </div>
     </div>
@@ -477,11 +444,11 @@
         ></textarea>
         <button class="send-btn" id="sendBtn" onclick="handleSend()" title="Senden">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 4L4 12h5v8h6v-8h5z"/>
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
           </svg>
         </button>
       </div>
-      <div class="footer-note">METAi basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
+      <div class="footer-note">METAI basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
     </div>
   </div>
 
@@ -541,8 +508,7 @@ Züge. Brücken. Strommasten. Operationssäle. Ohne Metall steht alles still. Di
 
 Metall bewegt, verbindet, schützt und trägt. Es hält viel aus — und noch mehr bereit.
 
-`,
-    chips: ["Kreislaufwirtschaft?", "Klimaschutz & Metall?", "Jobs in der Branche?"]
+`
   },
   {
     triggers: ["nur mit metall", "was ist möglich", "was metall kann", "allein metall", "einzigartig", "kein anderer werkstoff"],
@@ -552,8 +518,7 @@ Ein Bühnengerüst, das 40 Personen trägt. Ein Karabiner, dem ein Kletterer sei
 
 <em>Kein anderer Werkstoff kann das alles.</em> Metall ist stark, formbar, präzise — und es hält, was andere nur versprechen.
 
-`,
-    chips: ["Metall in der Architektur?", "Metall & Mobilität?", "Metall & Energiewende?"]
+`
   },
   {
     triggers: ["klima", "umwelt", "co2", "nachhaltigkeit", "klimaproblem", "klimaschutz", "ökologisch", "grün"],
@@ -568,8 +533,7 @@ Das klingt mutig. Aber es stimmt. Denn:
 <li>Metall ermöglicht die Energiewende — Windräder, Solarpanels, Batterien brauchen alle Metall.</li>
 </ul>
 
-Hält Wort in Sachen Klima.`,
-    chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Metall & Energiewende?"]
+Hält Wort in Sachen Klima.`
   },
   {
     triggers: ["green steel", "grüner stahl", "elektrolichtbogen", "eisenoxid", "elektrolyse", "wasserstoff stahl"],
@@ -585,8 +549,7 @@ Die Stahlindustrie steht vor einer Revolution. Und sie macht sie selbst.
 
 Green Steel hält Europa im Spiel. Und hält Schritt mit dem Pariser Klimaziel.
 
-`,
-    chips: ["Kreislaufwirtschaft?", "Metall & Energiewende?", "Jobs in der Branche?"]
+`
   },
   {
     triggers: ["kreislauf", "recycling", "recycelbar", "wiederverwendung", "kreislaufwirtschaft", "circular"],
@@ -600,8 +563,7 @@ Kein anderer Werkstoff recycelt sich so gut wie Metall. Stahl aus dem Schrottpla
 <li><strong>Kupfer:</strong> verliert beim Recyclen keine Leitfähigkeit</li>
 </ul>
 
-Metall kennt kein Ende. Nur einen neuen Anfang.`,
-    chips: ["Was ist Green Steel?", "Einzelne Metalle?", "Klimaschutz & Metall?"]
+Metall kennt kein Ende. Nur einen neuen Anfang.`
   },
   {
     triggers: ["jobs", "beschäftigte", "arbeitsplätze", "mitarbeiter", "arbeit", "130.000", "berufe"],
@@ -611,12 +573,11 @@ Die Metallbranche ist einer der größten Arbeitgeber Österreichs. Ingenieurinn
 
 Metall hält Können im Land — und bietet Berufe mit Zukunft. Nicht trotz, sondern wegen der Transformation. Wer Metall versteht, versteht die Wirtschaft von morgen.
 
-`,
-    chips: ["Metall in Österreich?", "Zukunft & Innovation?", "Was ist die Metall Allianz?"]
+`
   },
   {
     triggers: ["metall allianz", "zukunft metall", "initiative", "wer seid ihr", "was ist metai", "was bist du", "wer bist du"],
-    answer: `<strong>Ich bin METAi — die Stimme der Metall Allianz.</strong>
+    answer: `<strong>Ich bin METAI — die Stimme der Metall Allianz.</strong>
 
 Die Metall Allianz ist keine klassische Lobby. Kein Interessensverband mit Hochglanzbroschüre. Sie ist eine gemeinsame Haltung von Unternehmen, Menschen und Ideen — für eine Branche, die trägt.
 
@@ -629,8 +590,7 @@ Fünf Missionen:
 <li><strong>Zukunft denken</strong> — langfristig planen</li>
 </ul>
 
-Nicht als Branche. Nicht als Lobby. Sondern als gemeinsame Haltung.`,
-    chips: ["Jobs in der Branche?", "Metall in Österreich?", "Zukunft & Innovation?"]
+Nicht als Branche. Nicht als Lobby. Sondern als gemeinsame Haltung.`
   },
   {
     triggers: ["zukunft", "zukunftsfähig", "morgen", "innovation", "digitalisierung", "automatisierung", "fortschritt"],
@@ -647,8 +607,7 @@ Metall ist nicht das Material von gestern. Es ist das Material des Wandels.
 
 Heute arbeitet Metall präzise, vernetzt und im Kreislauf. Das war noch nie so. Und das ist erst der Anfang.
 
-`,
-    chips: ["Was ist Green Steel?", "Metall & Energiewende?", "Kreislaufwirtschaft?"]
+`
   },
   {
     triggers: ["energie", "energiewende", "windkraft", "solar", "batterie", "strom", "windrad"],
@@ -663,8 +622,7 @@ Das ist keine Behauptung. Das ist Physik.
 <li><strong>Stromleitungen</strong> über tausende Kilometer? Kupfer und Aluminium</li>
 </ul>
 
-Wer die Energiewende will, muss Metall wollen. Hält Europa im Spiel.`,
-    chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Metall & Mobilität?"]
+Wer die Energiewende will, muss Metall wollen. Hält Europa im Spiel.`
   },
   {
     triggers: ["aluminium", "stahl", "kupfer", "eisen", "titan", "nickel", "metalle"],
@@ -680,8 +638,7 @@ Jedes Metall hat seine Stärken. Und gemeinsam sind sie unschlagbar.
 <li><strong>Nickel / Kobalt:</strong> Schlüsselelemente für Batterietechnologie</li>
 </ul>
 
-Formbar. Haltbar. Verlässlich. `,
-    chips: ["Kreislaufwirtschaft?", "Metall & Energiewende?", "Metall & Mobilität?"]
+Formbar. Haltbar. Verlässlich. `
   },
   {
     triggers: ["österreich", "heimisch", "inland", "standort", "produktion", "wien", "graz"],
@@ -691,24 +648,21 @@ Formbar. Haltbar. Verlässlich. `,
 
 Mehr als <strong>130.000 Arbeitsplätze</strong>. Milliarden an Exportwert. Metall hält Können im Land — und macht Österreich zur Technologienation.
 
-`,
-    chips: ["Jobs in der Branche?", "Metall in der Architektur?", "Metall & Mobilität?"]
+`
   },
   {
     triggers: ["hallo", "hi", "guten", "guten tag", "servus", "grüß", "hey", "start", "wer bist"],
-    answer: `<strong>Servus! Ich bin METAi.</strong>
+    answer: `<strong>Servus! Ich bin METAI.</strong>
 
 Die Stimme der Metall Allianz. Ich bin hier, um Fragen über Metall zu beantworten — von Klimaschutz und Kreislaufwirtschaft bis zu Jobperspektiven und Innovation.
 
-Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Branche.`,
-    chips: ["Klimaschutz & Metall?", "Jobs in der Branche?", "Metall & Energiewende?"]
+Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Branche.`
   },
   {
     triggers: ["danke", "super", "toll", "prima", "gut", "vielen dank", "interessant", "wusste ich nicht"],
     answer: `Freut mich! Metall hat noch viel mehr zu erzählen.
 
-Frag mich weiter — ich bin nicht so schnell fertig.`,
-    chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Jobs in der Branche?"]
+Frag mich weiter — ich bin nicht so schnell fertig.`
   },
   {
     triggers: ["brücke", "gebäude", "architektur", "hochhaus", "konstruktion", "tragwerk"],
@@ -718,8 +672,7 @@ Im wahrsten Sinne. Jede Brücke. Jede Fassade. Jedes Hochhaus. Stahl und Alumini
 
 Das Burj Khalifa? Stahl. Die Golden Gate Bridge? Stahl. Die Glashülle des Louvre-Eingangs? Aluminium.
 
-Metall hält — auch im Grenzbereich. `,
-    chips: ["Einzelne Metalle?", "Metall in Österreich?", "Kreislaufwirtschaft?"]
+Metall hält — auch im Grenzbereich. `
   },
   {
     triggers: ["auto", "mobilität", "e-auto", "elektro", "fahrzeug", "transport", "lkw", "zug"],
@@ -729,8 +682,7 @@ Kein Auto ohne Karosserie aus Stahl und Aluminium. Kein Zug ohne Gleise. Kein E-
 
 Die Mobilitätswende braucht mehr Metall, nicht weniger. Leichtere Bauteile aus Aluminium. Hochfester Stahl für Sicherheitszellen. Batteriegehäuse aus Speziallegierungen.
 
-Metall hält Schritt. `,
-    chips: ["Metall & Energiewende?", "Einzelne Metalle?", "Was ist Green Steel?"]
+Metall hält Schritt. `
   },
 ];
 
@@ -738,37 +690,19 @@ const FALLBACK = `Das ist eine gute Frage — und ich bin noch im Aufbau meiner 
 
 Was ich sagen kann: <strong>Metall hält.</strong> In jeder Situation. Was genau du wissen willst, kannst du mir gerne nochmal mit anderen Worten schreiben.`;
 
-const FALLBACK_CHIPS = ["Klimaschutz & Metall?", "Was ist Green Steel?", "Jobs in der Branche?", "Kreislaufwirtschaft?"];
-
 // ─────────────────────────────────────────────
 // CORE FUNCTIONS
 // ─────────────────────────────────────────────
 
-function getAnswerWithChips(query) {
+function getAnswer(query) {
   const q = query.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   for (const entry of KB) {
     for (const t of entry.triggers) {
       const norm = t.normalize("NFD").replace(/[̀-ͯ]/g, "");
-      if (q.includes(norm)) return { answer: entry.answer, chips: entry.chips || [] };
+      if (q.includes(norm)) return entry.answer;
     }
   }
-  return { answer: FALLBACK, chips: FALLBACK_CHIPS };
-}
-
-function addChips(chipsArr) {
-  if (!chipsArr || !chipsArr.length) return;
-  const msgs = document.getElementById('messages');
-  const row = document.createElement('div');
-  row.className = 'chips-row';
-  chipsArr.forEach(label => {
-    const btn = document.createElement('button');
-    btn.className = 'chip';
-    btn.textContent = label;
-    btn.onclick = () => { row.remove(); sendMessage(label); };
-    row.appendChild(btn);
-  });
-  msgs.appendChild(row);
-  scrollBottom();
+  return FALLBACK;
 }
 
 function now() {
@@ -836,11 +770,9 @@ function sendChip(btn) {
 }
 
 async function sendMessage(text) {
+  // Remove splash if present
   const splash = document.getElementById('splashCard');
   if (splash) splash.remove();
-
-  // Remove existing chips before new exchange
-  document.querySelectorAll('.chips-row').forEach(el => el.remove());
 
   addMessage(text, 'user');
 
@@ -852,9 +784,8 @@ async function sendMessage(text) {
   removeTyping();
   document.getElementById('sendBtn').disabled = false;
 
-  const { answer, chips } = getAnswerWithChips(text);
+  const answer = getAnswer(text);
   addMessage(answer, 'bot');
-  addChips(chips);
 }
 
 function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
@@ -932,7 +863,7 @@ async function showGreeting() {
   const typing = showTyping();
   await delay(900);
   removeTyping();
-  addMessage(`<strong>Servus. Ich bin METAi.</strong>
+  addMessage(`<strong>Servus. Ich bin METAI.</strong>
 
 Die Stimme der Metall Allianz — und ich hab einiges zu erzählen.
 
@@ -942,8 +873,8 @@ Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Bra
   await delay(200);
   renderSplash(splashIndex);
 
-  // Auto-rotate splash every 12s
-  setInterval(rotateSplash, 12000);
+  // Auto-rotate splash every 7s
+  setInterval(rotateSplash, 7000);
 }
 
 // ─────────────────────────────────────────────
