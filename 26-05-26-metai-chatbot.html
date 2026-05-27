@@ -1065,6 +1065,7 @@ async function callClaudeAPI(userText) {
       stream: true,
       system: SYSTEM_PROMPT,
       messages: conversationHistory,
+      output_config: { effort: 'low' },
     })
   });
 
