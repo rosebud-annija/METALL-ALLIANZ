@@ -223,9 +223,9 @@
       border: 1.5px solid var(--text);
       color: #ffffff;
       border-top-right-radius: 3px;
-      white-space: nowrap;
       padding: 13px 24px;
     }
+    .message.user .bubble.nowrap { white-space: nowrap; }
 
     .bubble strong {
       color: var(--text);
@@ -1210,6 +1210,7 @@ function addMessage(html, role) {
 
   const bubbleEl = document.createElement('div');
   bubbleEl.className = 'bubble';
+  if (role === 'user' && !html.includes(' ')) bubbleEl.classList.add('nowrap');
   bubbleEl.innerHTML = html;
 
   const tsEl = document.createElement('div');
