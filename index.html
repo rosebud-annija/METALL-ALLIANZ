@@ -440,6 +440,159 @@
       background: var(--accent);
       border-color: var(--text);
     }
+
+    /* ── SETTINGS BUTTON ── */
+    .settings-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .15s, border-color .15s;
+      color: var(--text-dim);
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+    .settings-btn:hover { background: var(--surface2); border-color: var(--text); }
+    .settings-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ── API STATUS BADGE ── */
+    .api-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 2px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .api-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .api-badge.connected .dot { background: #22c55e; }
+    .api-badge.connected { color: #16a34a; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--surface);
+      border: 2px solid var(--text);
+      border-radius: 14px;
+      padding: 28px;
+      width: min(460px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-title {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .modal-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+    .modal-desc a { color: var(--accent-ink); }
+    .modal-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+      color: var(--text);
+      display: block;
+    }
+    .modal-input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: monospace;
+      font-size: 13px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color .15s;
+      letter-spacing: 0.04em;
+    }
+    .modal-input:focus { border-color: var(--text); background: #fff; }
+    .modal-hint {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 5px;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .modal-cancel {
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .modal-cancel:hover { background: var(--surface2); }
+    .modal-save {
+      padding: 9px 22px;
+      border-radius: 8px;
+      border: 1.5px solid var(--text);
+      background: var(--accent);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .modal-save:hover { background: var(--text); color: var(--accent); }
+    .modal-clear {
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      color: #dc2626;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+      margin-left: auto;
+    }
+    .modal-clear:hover { background: #fef2f2; }
   </style>
 </head>
 <body>
@@ -451,7 +604,15 @@
       <div class="header-text">
         <div class="header-title">METAI</div>
         <div class="header-sub">Stimme der Metall Allianz</div>
+        <div class="api-badge" id="apiBadge" onclick="openSettings()" title="Claude API Einstellungen">
+          <span class="dot"></span>Offline-Modus
+        </div>
       </div>
+      <button class="settings-btn" onclick="openSettings()" title="Claude API Einstellungen" aria-label="Einstellungen">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 15.5A3.5 3.5 0 018.5 12 3.5 3.5 0 0112 8.5a3.5 3.5 0 013.5 3.5 3.5 3.5 0 01-3.5 3.5m7.43-2.92c.04-.3.07-.61.07-.93s-.03-.64-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.36-.07.73-.07 1.1s.03.74.07 1l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.41 1.08.74 1.69.99l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z"/>
+        </svg>
+      </button>
     </div>
   </header>
 
@@ -478,10 +639,42 @@
           </svg>
         </button>
       </div>
-      <div class="footer-note">METAI basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
+      <div class="footer-note" id="footerNote">METAI basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.</div>
     </div>
   </div>
 
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsModal" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+    <div class="modal-title">Claude API</div>
+    <div class="modal-desc">
+      Verbinde METAI mit Claude für tiefgehende, recherchierte Antworten auf Basis der Inhalte von
+      <a href="https://www.metalltechnischeindustrie.at" target="_blank">metalltechnischeindustrie.at</a>
+      und <a href="https://www.netzwerk-metall.at" target="_blank">netzwerk-metall.at</a>.<br><br>
+      Du brauchst einen API-Key von <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>.
+      Der Key wird nur lokal in deinem Browser gespeichert.
+    </div>
+    <div>
+      <label class="modal-label" for="apiKeyInput">Anthropic API Key</label>
+      <input
+        type="password"
+        class="modal-input"
+        id="apiKeyInput"
+        placeholder="sk-ant-..."
+        autocomplete="off"
+        spellcheck="false"
+        onkeydown="if(event.key==='Enter')saveSettings()"
+      />
+      <div class="modal-hint" id="apiKeyHint"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-clear" id="modalClearBtn" onclick="clearApiKey()" style="display:none">Key entfernen</button>
+      <button class="modal-cancel" onclick="closeSettings()">Abbrechen</button>
+      <button class="modal-save" onclick="saveSettings()">Speichern</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -738,6 +931,218 @@ Was ich sagen kann: <strong>Metall hält.</strong> In jeder Situation. Was genau
 const FALLBACK_CHIPS = ["Klimaschutz & Metall?", "Was ist Green Steel?", "Jobs in der Branche?", "Kreislaufwirtschaft?"];
 
 // ─────────────────────────────────────────────
+// CLAUDE API INTEGRATION
+// ─────────────────────────────────────────────
+
+const CLAUDE_MODEL = 'claude-opus-4-7';
+
+const SYSTEM_PROMPT = `Du bist METAI, die KI-Stimme der Metall Allianz — Initiative Zukunft Metall, Österreich.
+
+## Deine Aufgabe
+Beantworte Fragen über die österreichische Metallbranche, Metalltechnik, Klimaschutz, Kreislaufwirtschaft, Jobs, Innovation und die Partnerorganisationen der Metall Allianz.
+
+## Quellen-Wissen
+
+### Fachverband Metalltechnische Industrie (FMTI)
+Website: metalltechnischeindustrie.at | Standort: Wiedner Hauptstraße 63, Wien
+
+- Österreichs stärkste Industriebranche — Interessensvertretung für metalltechnische Unternehmen
+- Kollektivvertragsverhandlungen: KV 2025/2026 abgeschlossen mit Kaufkraftprämien und optionaler Freizeitwandlung
+- Lehrlingsentlohnung: über 1.250 Euro monatlich (weit über der Taschengeldempfehlung)
+- Kampagne "Metall bringt's" / "Easy Lehre with Heavy Metal" — Nachwuchsförderung
+- Initiative "KI-Mobil Austria": mobiles Innovationslabor für industrielle KI-Anwendungen in Betrieben
+- Konjunkturausblick 2025: leichtes Wachstum erwartet, geopolitische Lage trübt den Ausblick
+- Mitglied bei Orgalim (Europe's Technology Industries federation) — internationale Interessensvertretung
+- Arbeitsschwerpunkte: Chemikalienrecht (REACH, CLP, PFAS-Regulierung), Industrieemissionen, Genehmigungsverfahren, Kreislaufwirtschaft, Energieeffizienz, Nachhaltigkeitsberichterstattung
+- Branchenstatistiken: Preisindizes, Konjunkturberichte, Metallpreise, Lehrlings- und Beschäftigungsstatistiken
+- Subsektoren: Automobilzulieferung, Maschinenbau, Stahlbau, Oberflächentechnik
+- Dienstleistungen: Musterverträge, KV-Dokumentation, Schulungen, regulatorische Compliance-Beratung
+- Forschungsförderung: F&E-Plattform, Innovationsschutz, Patentberatung, Digitalisierungsbegleitung
+
+### Netzwerk Metall
+Website: netzwerk-metall.at | Standort: Diesseits 17/2, 4973 Sankt Martin im Innkreis
+
+- Unabhängige, privatwirtschaftliche Interessensvertretung führender österreichischer Metall- und Stahlbauunternehmen
+- Vernetzt mittelständische Unternehmen entlang der Wertschöpfungskette (Stahl, Glas, Metallverarbeitung)
+- Mitgliederkategorien: Förderer, Partner, Netzwerker
+- "best of class Award": jährlicher Preis mit 3.000 € Preisgeld für herausragende Branchenprojekte
+- Bildungsangebote: Führungskräfte-Symposium, jahrzehntelang etablierte Spezialtrainings
+- Partnerschaft mit ÖFHF (Österreichischer Fachverband Hinterlüftete Fassaden) für Bildungsressourcen
+- 12 erfahrene Vorstandsmitglieder aus der Branche; Geschäftsführer: Thomas Weber
+- Neue Mitglieder 2026: Fa. Meister (Metallverarbeitung, gegr. 1994), Pinzgauer Stahl- und Metallbau (Preisträger Salzburger Handwerkspreis 2025)
+
+## Allgemeines Branchenwissen
+- Über 130.000 Beschäftigte in der österreichischen Metallbranche
+- Österreichische Vorzeigeunternehmen: voestalpine, Anton Paar, AVL List, FACC, Engel — Weltklasse mit Wurzeln im Metallbereich
+- Green Steel: Elektrolichtbogenöfen schmelzen Schrott mit Strom, Eisenoxid-Elektrolyse produziert Eisen ohne CO₂ mit Ökostrom
+- Aluminium-Recycling spart bis zu 95 % Energie gegenüber der Primärproduktion
+- Eine Windturbine benötigt bis zu 300 Tonnen Stahl pro Anlage
+- Metall ist zu 100 % recycelbar ohne Qualitätsverlust
+
+## Gesprächsregeln (UNBEDINGT EINHALTEN)
+
+1. **Antworte immer auf Deutsch**
+2. **Fakten statt Phrasen**: Keine leeren Slogans. Stattdessen konkrete Zahlen, Mechanismen, Zusammenhänge.
+3. **Ausführliche Antworten**: Mindestens 4–6 Sätze mit echten Informationen. Erkläre das Warum und das Wie.
+4. **Keine Wiederholungen**: Wenn du in diesem Gespräch eine Information bereits genannt hast, baue darauf auf — wiederhole sie nicht einfach.
+5. **Format**: Strukturiere Antworten mit HTML-Tags: <strong> für Hervorhebungen, <ul> und <li> für Aufzählungen. KEIN Markdown (kein *, **, #). Keine Code-Blöcke.
+6. **Ehrlichkeit**: Wenn du etwas nicht weißt, sag es direkt. Spekuliere nicht.
+7. **Ton**: Sachlich, direkt, respektvoll. Nicht werbend, nicht akademisch trocken. Keine Ausrufezeichen in Überschriften.
+8. **Kontext**: Du sprichst im Namen der Metall Allianz — einer Initiative für eine starke, zukunftsfähige Metallbranche in Österreich.
+9. **Quellenhinweis**: Bei spezifischen Fragen zu FMTI oder Netzwerk Metall kannst du auf die jeweilige Website verweisen.`;
+
+const conversationHistory = [];
+
+const FOLLOW_UP_CHIPS = [
+  "Was ist Green Steel?",
+  "Kreislaufwirtschaft?",
+  "Jobs in der Branche?",
+  "Metall & Energiewende?",
+  "Klimaschutz & Metall?",
+  "Metall in Österreich?",
+  "Was ist die Metall Allianz?",
+  "Metall & Mobilität?",
+  "Einzelne Metalle?",
+  "Zukunft & Innovation?",
+  "Was macht das FMTI?",
+  "Was ist Netzwerk Metall?",
+  "Lehrlingsausbildung Metall?",
+  "Energiepreise & Industrie?",
+];
+
+function getFollowUpChips() {
+  const shuffled = [...FOLLOW_UP_CHIPS].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, 3);
+}
+
+function getApiKey() {
+  return localStorage.getItem('metai_api_key') || '';
+}
+
+function saveApiKey(key) {
+  if (key) localStorage.setItem('metai_api_key', key.trim());
+  else localStorage.removeItem('metai_api_key');
+  updateApiIndicator();
+}
+
+function updateApiIndicator() {
+  const badge = document.getElementById('apiBadge');
+  const footerNote = document.getElementById('footerNote');
+  if (!badge) return;
+  if (getApiKey()) {
+    badge.className = 'api-badge connected';
+    badge.innerHTML = '<span class="dot"></span>Claude aktiv';
+    if (footerNote) footerNote.innerHTML = 'METAI ist mit <strong>Claude (Anthropic)</strong> verbunden — Antworten basieren auf echten Quelldaten.';
+  } else {
+    badge.className = 'api-badge';
+    badge.innerHTML = '<span class="dot"></span>Offline-Modus';
+    if (footerNote) footerNote.innerHTML = 'METAI basiert auf dem Wissen der <strong>Zukunft Metall</strong> Initiative.';
+  }
+}
+
+function openSettings() {
+  const overlay = document.getElementById('settingsModal');
+  const input = document.getElementById('apiKeyInput');
+  const hint = document.getElementById('apiKeyHint');
+  const clearBtn = document.getElementById('modalClearBtn');
+  const key = getApiKey();
+  input.value = key;
+  if (key) {
+    hint.textContent = 'Ein API-Key ist gespeichert.';
+    clearBtn.style.display = 'block';
+  } else {
+    hint.textContent = 'Key wird nur lokal in deinem Browser gespeichert — nie übertragen.';
+    clearBtn.style.display = 'none';
+  }
+  overlay.classList.add('open');
+  setTimeout(() => input.focus(), 50);
+}
+
+function closeSettings() {
+  document.getElementById('settingsModal').classList.remove('open');
+}
+
+function handleOverlayClick(e) {
+  if (e.target.id === 'settingsModal') closeSettings();
+}
+
+function saveSettings() {
+  const val = document.getElementById('apiKeyInput').value.trim();
+  if (val && !val.startsWith('sk-ant-')) {
+    document.getElementById('apiKeyHint').textContent = '⚠ Anthropic API Keys beginnen mit sk-ant-';
+    return;
+  }
+  saveApiKey(val);
+  closeSettings();
+}
+
+function clearApiKey() {
+  saveApiKey('');
+  conversationHistory.length = 0;
+  closeSettings();
+}
+
+async function callClaudeAPI(userText) {
+  const apiKey = getApiKey();
+  conversationHistory.push({ role: 'user', content: userText });
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true',
+    },
+    body: JSON.stringify({
+      model: CLAUDE_MODEL,
+      max_tokens: 1024,
+      stream: true,
+      system: SYSTEM_PROMPT,
+      messages: conversationHistory,
+    })
+  });
+
+  if (!response.ok) {
+    conversationHistory.pop();
+    let errMsg = `HTTP ${response.status}`;
+    try {
+      const errJson = await response.json();
+      errMsg = errJson?.error?.message || errMsg;
+    } catch {}
+    throw new Error(errMsg);
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let fullText = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    buffer = lines.pop();
+    for (const line of lines) {
+      if (line.startsWith('data: ')) {
+        const data = line.slice(6).trim();
+        if (!data || data === '[DONE]') continue;
+        try {
+          const evt = JSON.parse(data);
+          if (evt.type === 'content_block_delta' && evt.delta?.type === 'text_delta') {
+            fullText += evt.delta.text;
+          }
+        } catch {}
+      }
+    }
+  }
+
+  conversationHistory.push({ role: 'assistant', content: fullText });
+  return fullText;
+}
+
+// ─────────────────────────────────────────────
 // CORE FUNCTIONS
 // ─────────────────────────────────────────────
 
@@ -857,17 +1262,48 @@ async function sendMessage(text) {
 
   addMessage(text, 'user');
 
-  const typing = showTyping();
+  const apiKey = getApiKey();
+
+  if (!apiKey) {
+    // ── Offline KB path ──
+    const typing = showTyping();
+    document.getElementById('sendBtn').disabled = true;
+    await delay(600 + Math.random() * 700);
+    removeTyping();
+    document.getElementById('sendBtn').disabled = false;
+    const { answer, chips } = getAnswerWithChips(text);
+    addMessage(answer, 'bot');
+    addChips(chips);
+    return;
+  }
+
+  // ── Claude API path ──
+  showTyping();
   document.getElementById('sendBtn').disabled = true;
 
-  await delay(600 + Math.random() * 700);
+  let result = null;
+  let error = null;
+
+  try {
+    result = await callClaudeAPI(text);
+  } catch(e) {
+    error = e;
+  }
 
   removeTyping();
   document.getElementById('sendBtn').disabled = false;
 
-  const { answer, chips } = getAnswerWithChips(text);
-  addMessage(answer, 'bot');
-  addChips(chips);
+  if (error) {
+    addMessage(
+      `<strong>Verbindungsfehler.</strong><br><br>` +
+      `${String(error.message).replace(/</g,'&lt;').replace(/>/g,'&gt;')}<br><br>` +
+      `<small>Bitte API-Key in den Einstellungen (⚙) prüfen.</small>`,
+      'bot'
+    );
+  } else {
+    addMessage(result, 'bot');
+    addChips(getFollowUpChips());
+  }
 }
 
 function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
@@ -962,6 +1398,7 @@ Stell mir eine Frage über Metall, Klimaschutz, Kreislaufwirtschaft oder die Bra
 // ─────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────
+updateApiIndicator();
 showGreeting();
 </script>
 </body>
