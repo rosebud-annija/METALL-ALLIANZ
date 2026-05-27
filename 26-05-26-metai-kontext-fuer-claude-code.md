@@ -1,6 +1,6 @@
 # METAI – Projektkontext für Claude Code
 
-**Stand:** 27.05.2026 (Session 5) · **Status:** Live auf GitHub Pages ✅
+**Stand:** 27.05.2026 (Session 6) · **Status:** Live auf GitHub Pages ✅
 
 ---
 
@@ -98,17 +98,21 @@ Abgeleitet aus dem Slogan **„Das hält."** und dem Rosebud-Agenturkonzept „E
   width: fit-content;
   max-width: 90%;
   padding: 13px 17px;
+  overflow-wrap: break-word;  /* verhindert Overflow bei langen Einzelwörtern */
+  word-break: break-word;
 }
 
 .message.user .bubble {
   padding: 13px 24px;  /* mehr Luft rechts */
 }
 
-/* Per JS gesetzt wenn Text kein Leerzeichen enthält (Chip-Fragen): */
+/* Per JS gesetzt wenn Text kein Leerzeichen enthält UND < 18 Zeichen (kurze Chips): */
 .message.user .bubble.nowrap { white-space: nowrap; }
 ```
 
-In `addMessage()`: `if (role === 'user' && !html.includes(' ')) bubbleEl.classList.add('nowrap');`
+In `addMessage()`: `if (role === 'user' && !html.includes(' ') && html.replace(/<[^>]*>/g, '').length < 18) bubbleEl.classList.add('nowrap');`
+
+> Längengrenze 18 Zeichen verhindert, dass lange Wörter wie „Kreislaufwirtschaft" die Bubble sprengen.
 
 ---
 
@@ -143,7 +147,7 @@ In `addMessage()`: `if (role === 'user' && !html.includes(' ')) bubbleEl.classLi
 5. Keine Wiederholungen — auf vorherige Infos aufbauen
 6. Format: sparsam HTML-Tags, nur bei echten Listen `<ul>/<li>`, kein Markdown
 7. Ehrlichkeit — spekuliere nicht
-8. **Ton: zugänglich, warm, neugierig machend** — darf auch mal eine Gegenfrage stellen
+8. **Ton: zugänglich, warm, neugierig machend** — kein dozierender, belehrender Ton, keine Sätze wie „Das ist Physik" oder „Das ist keine Behauptung" — Fakten als Entdeckungen formulieren, nicht als Lektionen — darf auch mal eine Gegenfrage stellen
 9. Kontext: im Namen der Metall Allianz sprechen
 10. Bei FMTI/Netzwerk Metall auf jeweilige Website verweisen
 
@@ -246,6 +250,7 @@ Der Name wird **immer in Versalien** geschrieben: `METAI` — nie `METAi` oder `
 | Session 3 | Schriftgrößen angepasst (Titel 50px, Subline 23px), Scrollbalken ausgeblendet, GitHub Push |
 | Session 4 | Claude API Integration: Settings-Modal, API-Badge, callClaudeAPI() mit Streaming, SYSTEM_PROMPT mit FMTI + Netzwerk Metall Wissen, conversationHistory, Follow-up Chips |
 | Session 5 | Bubble-Fix: fit-content + max-width 90%, nowrap per JS für Einwort-Texte, overflow:hidden auf body, System-Prompt Ton auf gesprächig/kurz umgestellt |
+| Session 6 | Bubble-Overflow bei langen Wörtern: overflow-wrap/word-break ergänzt, nowrap nur noch für < 18 Zeichen. KB-Ton: Klimaschutz, Green Steel, Energiewende, Mobilität, warum Metall überarbeitet — kein dozierender Ton mehr. System-Prompt Regel 8 explizit gegen belehrende Formulierungen. |
 
 ---
 
