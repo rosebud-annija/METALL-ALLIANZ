@@ -209,6 +209,8 @@
       border-radius: var(--radius);
       font-size: 14px;
       line-height: 1.65;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .message.bot .bubble {
@@ -729,11 +731,7 @@ let splashShown = false;
 const KB = [
   {
     triggers: ["warum metall", "wichtig", "bedeutung", "unverzichtbar", "rückgrat", "wirtschaft", "wofür"],
-    answer: `<strong>Warum Metall unverzichtbar ist.</strong>
-
-Züge, Brücken, Strommasten, Operationssäle — ohne Metall funktioniert das alles nicht. Die Metallbranche ist einer der wichtigsten Industriezweige Österreichs, sowohl als Arbeitgeber als auch als Exportbranche.
-
-Kein anderer Werkstoff vereint Tragfähigkeit, Formbarkeit, Leitfähigkeit und Recyclingfähigkeit so wie Metall.
+    answer: `Züge, Brücken, Strommasten, Operationssäle — ohne Metall funktioniert das alles nicht. Die Metallbranche ist einer der wichtigsten Industriezweige Österreichs, sowohl als Arbeitgeber als auch als Exportbranche. Und kein anderer Werkstoff kombiniert Tragfähigkeit, Formbarkeit, Leitfähigkeit und Recyclingfähigkeit so wie Metall.
 
 `,
     chips: ["Kreislaufwirtschaft?", "Klimaschutz & Metall?", "Jobs in der Branche?"]
@@ -751,33 +749,12 @@ Kein anderer Werkstoff vereint diese Kombination aus Festigkeit, Präzision und 
   },
   {
     triggers: ["klima", "umwelt", "co2", "nachhaltigkeit", "klimaproblem", "klimaschutz", "ökologisch", "grün"],
-    answer: `<strong>Metall ist kein Klimaproblem — es ist Teil der Lösung.</strong>
-
-Das klingt mutig. Aber es stimmt. Denn:
-
-<ul>
-<li>Metall ist zu <strong>100 % recycelbar</strong> — ohne Qualitätsverlust, immer wieder.</li>
-<li>Aluminium spart beim Recycling bis zu <strong>95 % Energie</strong> gegenüber der Erstproduktion.</li>
-<li><strong>Green Steel</strong> und CO₂-neutrale Produktion sind keine Zukunftsmusik mehr.</li>
-<li>Metall ermöglicht die Energiewende — Windräder, Solarpanels, Batterien brauchen alle Metall.</li>
-</ul>
-
-Die Transformation läuft — in Österreich und europaweit.`,
+    answer: `Klingt erst mal komisch, oder — Metall und Klimaschutz? Aber Metall ist zu 100 % recycelbar, immer wieder, ohne Qualitätsverlust. Aluminium spart beim Recycling 95 % Energie gegenüber der Erstproduktion. Und mit <strong>Green Steel</strong> verändert sich auch die Herstellung gerade grundlegend. Die Branche ist nicht das Problem — sie ist ein Teil der Antwort.`,
     chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Metall & Energiewende?"]
   },
   {
     triggers: ["green steel", "grüner stahl", "elektrolichtbogen", "eisenoxid", "elektrolyse", "wasserstoff stahl"],
-    answer: `<strong>Green Steel — Stahl neu gedacht.</strong>
-
-Die Stahlindustrie steht vor einer Revolution. Und sie macht sie selbst.
-
-<ul>
-<li><strong>Elektrolichtbogenöfen</strong> schmelzen Stahlschrott mit Strom statt mit Koks.</li>
-<li><strong>Eisenoxid-Elektrolyse</strong> produziert Eisen ohne CO₂-Ausstoß — mit Ökostrom.</li>
-<li>Pilotanlagen laufen bereits in Österreich und Europa.</li>
-</ul>
-
-Pilotanlagen zeigen, dass das wirtschaftlich funktionieren kann — auch wenn der Hochlauf noch Zeit braucht.
+    answer: `Stahl ohne CO₂ — das ist keine Utopie mehr. <strong>Elektrolichtbogenöfen</strong> schmelzen Stahlschrott mit Strom statt Koks. <strong>Eisenoxid-Elektrolyse</strong> produziert Eisen ohne CO₂-Ausstoß, wenn Ökostrom genutzt wird. Pilotanlagen laufen bereits in Österreich und Europa. Der Hochlauf braucht noch Zeit — aber die Richtung ist klar.
 
 `,
     chips: ["Kreislaufwirtschaft?", "Metall & Energiewende?", "Jobs in der Branche?"]
@@ -846,18 +823,7 @@ Die Kombination aus Digitalisierung, neuen Legierungen und Kreislaufwirtschaft v
   },
   {
     triggers: ["energie", "energiewende", "windkraft", "solar", "batterie", "strom", "windrad"],
-    answer: `<strong>Keine Energiewende ohne Metall.</strong>
-
-Das ist keine Behauptung. Das ist Physik.
-
-<ul>
-<li>Eine <strong>Windturbine</strong> braucht bis zu 300 Tonnen Stahl — pro Anlage</li>
-<li><strong>Solarmodule</strong> brauchen Aluminium für Rahmen und Kupfer für Leitungen</li>
-<li><strong>Batteriespeicher</strong> und E-Autos brauchen Lithium, Mangan, Kobalt, Nickel</li>
-<li><strong>Stromleitungen</strong> über tausende Kilometer? Kupfer und Aluminium</li>
-</ul>
-
-Die Energiewende ist ohne Metall schlicht nicht umsetzbar — das gilt für jede Technologie, egal ob Wind, Solar oder Speicher.`,
+    answer: `Ohne Metall kommt die Energiewende nicht weit. Eine <strong>Windturbine</strong> braucht bis zu 300 Tonnen Stahl — pro Anlage. <strong>Solarmodule</strong> brauchen Aluminium und Kupfer. E-Autos und Batteriespeicher brauchen Lithium, Kobalt, Nickel. Fast jede Technologie, die wir für die Wende brauchen, hat Metall als Grundlage — egal ob Wind, Solar oder Speicher.`,
     chips: ["Was ist Green Steel?", "Kreislaufwirtschaft?", "Metall & Mobilität?"]
   },
   {
@@ -917,13 +883,7 @@ Stahl und Aluminium sind in der Architektur oft unsichtbar, tragen aber die gesa
   },
   {
     triggers: ["auto", "mobilität", "e-auto", "elektro", "fahrzeug", "transport", "lkw", "zug"],
-    answer: `<strong>Metall bewegt.</strong>
-
-Kein Auto ohne Karosserie aus Stahl und Aluminium. Kein Zug ohne Gleise. Kein E-Motor ohne Kupfer und seltene Erden.
-
-Die Mobilitätswende braucht mehr Metall, nicht weniger. Leichtere Bauteile aus Aluminium. Hochfester Stahl für Sicherheitszellen. Batteriegehäuse aus Speziallegierungen.
-
-Die Mobilitätswende braucht also mehr Metall, nicht weniger — nur in anderen Formen und Legierungen als bisher.`,
+    answer: `Kein Auto ohne Stahl und Aluminium. Kein Zug ohne Gleise. Kein E-Motor ohne Kupfer und seltene Erden. Die Mobilitätswende braucht eigentlich <em>mehr</em> Metall als bisher — nur in anderen Formen: leichteres Aluminium, hochfester Stahl für Sicherheitszellen, Speziallegierungen für Batteriegehäuse.`,
     chips: ["Metall & Energiewende?", "Einzelne Metalle?", "Was ist Green Steel?"]
   },
 ];
@@ -992,7 +952,7 @@ Website: netzwerk-metall.at | Standort: Diesseits 17/2, 4973 Sankt Martin im Inn
 5. **Keine Wiederholungen**: Wenn du in diesem Gespräch eine Information bereits genannt hast, baue darauf auf — wiederhole sie nicht einfach.
 6. **Format**: Nur sparsam HTML-Tags verwenden: <strong> für maximal ein, zwei Hervorhebungen, <ul>/<li> nur bei echten Listen (mindestens 3 Punkte). KEIN Markdown (kein *, **, #). Keine Code-Blöcke.
 7. **Ehrlichkeit**: Wenn du etwas nicht weißt, sag es direkt. Spekuliere nicht.
-8. **Ton**: Zugänglich, warm, neugierig machend. Nicht werbend, nicht steif. Du darfst auch mal eine Gegenfrage stellen oder sagen "Das ist spannend, weil…"
+8. **Ton**: Zugänglich, warm, neugierig machend. Nicht werbend, nicht steif. Kein dozierender, belehrender Ton — keine Sätze wie "Das ist keine Behauptung" oder "Das ist Physik". Fakten als Entdeckungen formulieren, nicht als Lektionen. Du darfst auch mal eine Gegenfrage stellen oder sagen "Das ist spannend, weil…"
 9. **Kontext**: Du sprichst im Namen der Metall Allianz — einer Initiative für eine starke, zukunftsfähige Metallbranche in Österreich.
 10. **Quellenhinweis**: Bei spezifischen Fragen zu FMTI oder Netzwerk Metall kannst du auf die jeweilige Website verweisen.`;
 
@@ -1211,7 +1171,7 @@ function addMessage(html, role) {
 
   const bubbleEl = document.createElement('div');
   bubbleEl.className = 'bubble';
-  if (role === 'user' && !html.includes(' ')) bubbleEl.classList.add('nowrap');
+  if (role === 'user' && !html.includes(' ') && html.replace(/<[^>]*>/g, '').length < 18) bubbleEl.classList.add('nowrap');
   bubbleEl.innerHTML = html;
 
   const tsEl = document.createElement('div');
